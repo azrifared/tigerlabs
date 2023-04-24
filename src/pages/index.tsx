@@ -1,8 +1,2 @@
-
-export default function Home() {
-  return (
-    <>
-      test
-    </>
-  )
-}
+import { ClaimTable } from "@/modules/ClaimTable";
+export default () => <ClaimTable />

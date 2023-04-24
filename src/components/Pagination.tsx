@@ -1,4 +1,4 @@
-import { FontWeights, getTheme, IChoiceGroupOption, Stack, Text } from '@fluentui/react'
+import { FontWeights, IChoiceGroupOption, Stack, Text } from '@fluentui/react'
 import React from 'react'
 import styled from 'styled-components'
 import TabGroup, { ITabGroupProps } from './TabGroup'
@@ -10,8 +10,6 @@ interface IPaginationProps {
   onChange(page?: string): void
   showXNearest?: number
 }
-
-const theme = getTheme()
 
 const Pagination = ({
   count,
