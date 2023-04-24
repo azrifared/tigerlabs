@@ -32,7 +32,7 @@ export const tableColumns: IColumn[] = [
     name: 'Holder',
     fieldName: 'holder',
     minWidth: 50,
-    maxWidth: 150,
+    maxWidth: 100,
     data: 'string',
   },
   {
@@ -40,7 +40,7 @@ export const tableColumns: IColumn[] = [
     name: 'Policy Number',
     fieldName: 'policyNumber',
     minWidth: 50,
-    maxWidth: 100,
+    maxWidth: 70,
     data: 'string',
   },
   {
@@ -52,11 +52,11 @@ export const tableColumns: IColumn[] = [
     data: 'string',
   },
   {
-    key: 'desciption',
+    key: 'description',
     name: 'Description',
-    fieldName: 'desciption',
+    fieldName: 'description',
     minWidth: 50,
-    maxWidth: 70,
+    maxWidth: 200,
     data: 'string',
   },
    {

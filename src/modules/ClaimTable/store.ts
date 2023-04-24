@@ -35,25 +35,37 @@ export const skipCountAtom = atom({
   default: 0,
 })
 
+export const filterStatusAtom = atom({
+  key: 'Claim/FilterStatus',
+  default: 'All',
+})
+
 export const ClaimWithCountSelectionQuery = selector({
   key: 'Claim/CountSelectionQuery',
   get: async ({ get }) => {
     get(refreshIdAtom(0))
     const skip = get(skipCountAtom)
     const end = skip + PAGE_SIZE
+    const filterStatus = get(filterStatusAtom)
 
     if (!claimData) {
       claimData = await ClaimService.getClaims()
     }
 
-    const data = (claimData || [])
-      .slice(skip, end)
-      .map(claim => ({
-        ...claim,
-        totalAmount: Number(claim.amount) + Number(claim.processingFee)
-      }))
+    let count = claimData?.length || 0
+    let data = (claimData || []).map(claim => ({
+      ...claim,
+      totalAmount: Number(claim.amount) + Number(claim.processingFee)
+    }))
       
-    return [data, claimData?.length ?? 0]
+    if (filterStatus !== 'All') {
+      data = data.filter((claim) => claim.status === filterStatus)
+      count = data.length
+    }
+      
+    data = data.slice(skip, end)
+
+    return [data, count]
   },
 })
 

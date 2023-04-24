@@ -18,11 +18,9 @@ export class ClaimService {
   static async getClaims() {
     try {
       const resp = await $api.get<Claim[]>('/api/v1/claims')
-      console.log(resp.data)
       return resp.data
     } catch (err: any) {
       console.error('Failed to get claim. ' + err.message)
-      return
     }
   }
 }
