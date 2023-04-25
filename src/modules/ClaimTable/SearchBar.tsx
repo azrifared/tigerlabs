@@ -8,7 +8,6 @@ export function SearchBar() {
   const [searchQuery, setSearchQuery] = useRecoilState(searchQueryAtom)
   const debounceHandler = useCallback(Async.prototype.debounce(
     (value: string) => {
-      console.log(value)
       setSearchQuery(value)
     },
     500,

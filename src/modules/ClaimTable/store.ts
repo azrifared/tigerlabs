@@ -79,7 +79,8 @@ export const ClaimWithCountSelectionQuery = selector({
     }
 
     if (selectedColumn.activeColumn !== '') {
-      const { activeColumn, isSortedDescending } = selectedColumn
+      const { activeColumn, isSortedDescending } = selectedColumn;
+
       data = data.map((claim: any) => ({
         ...claim,
         amount: parseFloat(claim.amount),
@@ -105,6 +106,7 @@ export const ClaimWithCountSelectionQuery = selector({
 
         return similarWithId || similarWithHolderName || similarWithPolicy
       })
+      count = data.length
     }
     
     data = data.slice(skip, end)

@@ -23,4 +23,9 @@ export class ClaimService {
       console.error('Failed to get claim. ' + err.message)
     }
   }
+
+  static async createClaim(payload: any) {
+    const resp = await $api.post<any>('/api/v1/claims', payload)
+    return resp.data
+  }
 }
