@@ -16,10 +16,10 @@ export function RadioButton () {
     <Container>
       {FILTER_CLAIM_STATUS.map((status) => {
         if (status === activeStatus) return (
-          <ActiveButton>{status}</ActiveButton>
+          <ActiveButton key={status}>{status}</ActiveButton>
         )
         return (
-          <Button onClick={() => onFilterChange(status)}>{status}</Button>
+          <Button key={status} onClick={() => onFilterChange(status)}>{status}</Button>
         )
       })}
     </Container>

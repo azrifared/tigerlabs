@@ -26,6 +26,8 @@ export const tableColumns: IColumn[] = [
     minWidth: 50,
     maxWidth: 50,
     data: 'string',
+    isSorted: true,
+    isSortedDescending: false
   },
   {
     key: 'holder',
@@ -74,6 +76,8 @@ export const tableColumns: IColumn[] = [
     minWidth: 50,
     maxWidth: 70,
     data: 'string',
+    isSorted: true,
+    isSortedDescending: false
   },
   {
     key: 'totalAmount',
@@ -82,6 +86,8 @@ export const tableColumns: IColumn[] = [
     minWidth: 50,
     maxWidth: 100,
     data: 'string',
+    isSorted: true,
+    isSortedDescending: false
   },
   {
     key: 'createdAt',
@@ -90,5 +96,7 @@ export const tableColumns: IColumn[] = [
     minWidth: 50,
     maxWidth: 100,
     data: 'string',
+    isSorted: true,
+    isSortedDescending: false
   }
 ]

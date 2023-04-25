@@ -1,27 +1,33 @@
-import { Field, useFormik, FormikProvider } from "formik";
+import React, { useCallback } from 'react';
+import { Async } from '@fluentui/react';
 import styled from "styled-components";
+import { useRecoilState } from 'recoil';
+import { searchQueryAtom } from "./store";
 
 export function SearchBar() {
-  const formik = useFormik({
-    initialValues: { data: undefined },
-    onSubmit: (values) => {
-      console.log(values)
+  const [searchQuery, setSearchQuery] = useRecoilState(searchQueryAtom)
+  const debounceHandler = useCallback(Async.prototype.debounce(
+    (value: string) => {
+      console.log(value)
+      setSearchQuery(value)
     },
-  });
+    500,
+    { trailing: true }
+  ), [searchQuery, setSearchQuery])
+  
   
   return (
-    <FormikProvider value={formik}>
-      <InputField
-        id="searchBar"
-        type="searchBar"
-        name="searchBar"
-        placeholder="Search by id, holder name or policy number"
-      />
-    </FormikProvider>
+    <InputField
+      id="searchBar"
+      type="searchBar"
+      name="searchBar"
+      placeholder="Search by id, holder name or policy number"
+      onChange={(ev) => debounceHandler(ev.target.value)}
+    />
   )
 }
 
-export const InputField = styled(Field)`
+export const InputField = styled.input`
   margin: 10px;
   width: 350px;
   height: 30px;
